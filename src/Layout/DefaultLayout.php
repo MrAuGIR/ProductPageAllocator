@@ -4,6 +4,7 @@ namespace MrAuGir\Paginator\Layout;
 
 use MrAuGir\Paginator\Cursor\Cursor;
 use MrAuGir\Paginator\Cursor\Positionable;
+use MrAuGir\Paginator\Template\TemplatePaginatorInterface;
 
 class DefaultLayout implements LayoutPaginatorInterface
 {

@@ -21,6 +21,5 @@ class GridNavigatorTest extends TestCase
 
         $this->assertEquals(4,$layout->getCurrentCursor()->getX());
         $this->assertEquals(0,$layout->getCurrentCursor()->getY());
-
     }
 }

@@ -16,6 +16,9 @@ class Paginator
      */
     public function paginate(array $items)
     {
+        foreach ($items as $item) {
 
+
+        }
     }
 }
