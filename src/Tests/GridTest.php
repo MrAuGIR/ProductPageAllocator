@@ -12,6 +12,6 @@ class GridTest extends TestCase
     {
         $grid = new Grid(10,8);
 
-        $this->assertCount(10 * 8, $grid->getNodesInArray());
+        $this->assertCount(10 * 8, $grid->getNodes()->getFlatNodes());
     }
 }
