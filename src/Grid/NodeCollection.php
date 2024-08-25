@@ -43,7 +43,7 @@ class NodeCollection
     }
 
     /**
-     * @param int $row
+     * @param int $col
      * @return Node[]
      */
     public function getCol(int $col): array
