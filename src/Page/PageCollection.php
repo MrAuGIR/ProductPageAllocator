@@ -9,7 +9,8 @@ class PageCollection
      */
     public array $pages;
 
-    public function __construct()
+
+    public function __construct(public int $start = 1)
     {
         $this->pages = [];
     }
