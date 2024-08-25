@@ -2,6 +2,9 @@
 
 namespace MrAuGir\Paginator\Grid;
 
+use MrAuGir\Paginator\Page\PageCollection;
+use MrAuGir\Paginator\Template\GridElementInterface;
+
 class Grid
 {
     private NodeCollection $nodes;
@@ -20,7 +23,7 @@ class Grid
         return $this->nodes->getNodes();
     }
 
-    public function findPositionForBlock(Block $block, array &$pages): void
+    public function findPositionForBlock(GridElementInterface $block, PageCollection $pageCollection): void
     {
         $indexPage = 1;
         foreach ($this->getNodes() as $indexRow => $row) {
@@ -29,7 +32,9 @@ class Grid
                     $block->setX($indexCol);
                     $block->setY($indexRow);
                     $this->updateNodes($block);
-                    $pages[$indexPage][] = $block;
+                    $page = $pageCollection->getOrCreatePage($indexPage);
+                    $page->addBlock($block);
+                    $page->setGrid($this->copy());
                     return;
                 }
             }
@@ -42,12 +47,13 @@ class Grid
             $block->setX($position['col']);
             $block->setY($position['row']);
             $this->updateNodes($block);
-            $pages[$indexPage][] = $block;
+            $page = $pageCollection->getOrCreatePage($indexPage);
+            $page->addBlock($block);
+            $page->setGrid($this->copy());
         }
-
     }
 
-    private function searchAvailablePosition(Block $block): ?array
+    private function searchAvailablePosition(GridElementInterface $block): ?array
     {
         foreach ($this->getNodes() as $indexRow => $row) {
             foreach ($row as $indexCol => $node) {
@@ -59,7 +65,7 @@ class Grid
         return null;
     }
 
-    private function canPlaceBlock(Block $block,int $indexRow,int $indexCol): bool
+    private function canPlaceBlock(GridElementInterface $block,int $indexRow,int $indexCol): bool
     {
         for ($jBlock = 0; $jBlock < $block->getRows(); $jBlock++ ) {
 
@@ -73,7 +79,7 @@ class Grid
         return true;
     }
 
-    private function updateNodes(Block $block) :void
+    private function updateNodes(GridElementInterface $block) :void
     {
         $colorBlock = $this->generateRandomColor();
         for ($iBlock = $block->getY(); $iBlock < ($block->getY() + $block->getRows()); $iBlock++ ) {
@@ -105,4 +111,12 @@ class Grid
         return true;
     }
 
+
+    private function copy(): self
+    {
+        $grid = new Grid($this->rows,$this->cols);
+        $grid->nodes = clone $this->nodes;
+
+        return $grid;
+    }
 }

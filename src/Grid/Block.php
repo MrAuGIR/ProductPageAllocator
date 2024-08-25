@@ -2,7 +2,9 @@
 
 namespace MrAuGir\Paginator\Grid;
 
-class Block
+use MrAuGir\Paginator\Template\GridElementInterface;
+
+class Block implements GridElementInterface
 {
     private int $x;
 
@@ -52,6 +54,4 @@ class Block
     {
         $this->y = $y;
     }
-
-
 }
