@@ -66,4 +66,15 @@ class NodeCollection
         $this->nodes[$row][$col]->color = $color;
         return $this;
     }
+
+    public function getFlatNodes(): array
+    {
+        $flatArray = [];
+
+        array_walk_recursive($this->nodes, function($a) use (&$flatArray) {
+            $flatArray[] = $a;
+        });
+
+        return $flatArray;
+    }
 }

@@ -3,10 +3,8 @@
 namespace MrAuGir\Paginator;
 
 use MrAuGir\Paginator\Grid\Grid;
-use MrAuGir\Paginator\Layout\LayoutPaginatorInterface;
 use MrAuGir\Paginator\Page\PageCollection;
 use MrAuGir\Paginator\Template\GridElementInterface;
-use MrAuGir\Paginator\Template\TemplatePaginatorInterface;
 
 class PageDispatcher
 {
@@ -16,7 +14,7 @@ class PageDispatcher
 
     public function __construct()
     {
-        $this->grid = new Grid(10,8);
+        $this->grid = new Grid(10, 8);
         $this->pageCollection = new PageCollection();
     }
 
@@ -27,7 +25,7 @@ class PageDispatcher
     public function dispatch(array $blocks): void
     {
         foreach ($blocks as $block) {
-            $this->grid->findPositionForBlock($block,$this->pageCollection);
+            $this->grid->findPositionForBlock($block, $this->pageCollection);
         }
     }
 

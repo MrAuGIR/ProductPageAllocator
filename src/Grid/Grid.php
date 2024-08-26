@@ -18,15 +18,15 @@ class Grid
     }
 
 
-    public function getNodes(): array
+    public function getNodes(): NodeCollection
     {
-        return $this->nodes->getNodes();
+        return $this->nodes;
     }
 
     public function findPositionForBlock(GridElementInterface $block, PageCollection $pageCollection): void
     {
         $indexPage = 1;
-        foreach ($this->getNodes() as $indexRow => $row) {
+        foreach ($this->getNodes()->getNodes() as $indexRow => $row) {
             foreach ($row as $indexCol => $node) {
                 if ($this->canPlaceBlock($block,$indexRow,$indexCol)) {
                     $block->setX($indexCol);
@@ -55,7 +55,7 @@ class Grid
 
     private function searchAvailablePosition(GridElementInterface $block): ?array
     {
-        foreach ($this->getNodes() as $indexRow => $row) {
+        foreach ($this->getNodes()->getNodes() as $indexRow => $row) {
             foreach ($row as $indexCol => $node) {
                 if ($this->canPlaceBlock($block,$indexRow,$indexCol)) {
                     return ['col' => $indexCol,'row' => $indexRow];
