@@ -61,6 +61,8 @@ class GridTest extends TestCase
 
         // l'index 1 doit être empty
         $this->assertNull($pageCollection->pages[1] ?? null);
+        // test interface array access
+        $this->assertNull($pageCollection[1] ?? null);
 
         $blocks = $pageCollection->getOrCreatePage(1)->getBlocks();
 
@@ -79,10 +81,17 @@ class GridTest extends TestCase
 
         // on doit trouver deux pages
         $this->assertCount(2, $pageCollection->pages);
+        // test coutable interface
+        $this->assertCOunt(2,$pageCollection);
 
         // il doit avoir trois blocks sur la première page et 1 block sur la seconde
         $this->testResult($pageCollection,1,3);
         $this->testResult($pageCollection,2,1);
+    }
+
+    public function testOffsetPageCollection():void
+    {
+        // TODO
     }
 
     public static function blocksCollectionProvider(): array
@@ -94,6 +103,46 @@ class GridTest extends TestCase
             BlockFixturesFactory::create(8,7),
         ];
     }
+
+    public static function collectionProvider(): array
+    {
+        return [
+            0 => [
+                [
+                    BlockFixturesFactory::create(8,2),
+                    BlockFixturesFactory::create(4,2),
+                    BlockFixturesFactory::create(4,2),
+                    BlockFixturesFactory::create(8,7)
+                ],
+                2
+            ],
+            1 => [
+                [
+                    BlockFixturesFactory::create(8,5),
+                    BlockFixturesFactory::create(8,5),
+                    BlockFixturesFactory::create(8,10),
+                ],
+                2,
+            ]
+
+        ];
+    }
+
+    #[DataProvider('collectionProvider')]
+    public function testProvider(array $blocks,$nbPages):void
+    {
+        // TODO
+        $grid = GridFixturesFactory::create(10,8);
+        $pageCollection = new PageCollection();
+
+        foreach ($blocks as $block) {
+            $grid->findPositionForBlock($block, $pageCollection);
+        }
+
+        $this->assertCount($nbPages, $pageCollection);
+    }
+
+
 
     private function testResult(PageCollection $pageCollection,int $index, int $blockExpected): void
     {
