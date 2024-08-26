@@ -78,6 +78,11 @@ class GridTest extends TestCase
         }
 
         // on doit trouver deux pages
+        $this->assertCount(2, $pageCollection->pages);
+
+        // il doit avoir trois blocks sur la première page et 1 block sur la seconde
+        $this->testResult($pageCollection,1,3);
+        $this->testResult($pageCollection,2,1);
     }
 
     public static function blocksCollectionProvider(): array
@@ -88,5 +93,11 @@ class GridTest extends TestCase
             BlockFixturesFactory::create(4,2),
             BlockFixturesFactory::create(8,7),
         ];
+    }
+
+    private function testResult(PageCollection $pageCollection,int $index, int $blockExpected): void
+    {
+        $this->assertCount($blockExpected, $pageCollection->pages[$index]->blocks);
+        $this->assertEquals($index, $pageCollection->pages[$index]->index);
     }
 }
