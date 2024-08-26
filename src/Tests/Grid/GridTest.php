@@ -8,6 +8,7 @@ use MrAuGir\Paginator\Grid\Grid;
 use MrAuGir\Paginator\Page\PageCollection;
 use MrAuGir\Paginator\Tests\Factory\GridFixturesFactory;
 use MrAuGir\Paginator\Tests\Factory\BlockFixturesFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class GridTest extends TestCase
@@ -46,5 +47,46 @@ class GridTest extends TestCase
         $this->assertEquals(2, $block->getRows());
         $this->assertEquals(0, $block->getY());
         $this->assertEquals(0, $block->getX());
+    }
+
+    public function testCanAddBlock(): void
+    {
+        $grid = GridFixturesFactory::create(10,8);
+
+        $block = BlockFixturesFactory::create(11,2);
+
+        $pageCollection = new PageCollection();
+
+        $grid->findPositionForBlock($block, $pageCollection);
+
+        // l'index 1 doit être empty
+        $this->assertNull($pageCollection->pages[1] ?? null);
+
+        $blocks = $pageCollection->getOrCreatePage(1)->getBlocks();
+
+        $this->assertCount(0, $blocks);
+    }
+
+
+    public function testAddMultipleBlocks():void
+    {
+        $grid = GridFixturesFactory::create(10,8);
+        $pageCollection = new PageCollection();
+
+        foreach (self::blocksCollectionProvider() as $block) {
+            $grid->findPositionForBlock($block, $pageCollection);
+        }
+
+        // on doit trouver deux pages
+    }
+
+    public static function blocksCollectionProvider(): array
+    {
+        return [
+            BlockFixturesFactory::create(8,2),
+            BlockFixturesFactory::create(4,2),
+            BlockFixturesFactory::create(4,2),
+            BlockFixturesFactory::create(8,7),
+        ];
     }
 }
