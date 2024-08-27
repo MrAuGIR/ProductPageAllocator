@@ -91,7 +91,11 @@ class GridTest extends TestCase
 
     public function testOffsetPageCollection():void
     {
-        // TODO
+        $this->expectException(\InvalidArgumentException::class);
+
+        $pageCollection = new PageCollection();
+        $pageCollection['invalid_argument'] = "not a page instance";
+
     }
 
     public static function blocksCollectionProvider(): array
@@ -112,9 +116,8 @@ class GridTest extends TestCase
                     BlockFixturesFactory::create(8,2),
                     BlockFixturesFactory::create(4,2),
                     BlockFixturesFactory::create(4,2),
-                    BlockFixturesFactory::create(8,7)
                 ],
-                2
+                1
             ],
             1 => [
                 [
@@ -123,6 +126,15 @@ class GridTest extends TestCase
                     BlockFixturesFactory::create(8,10),
                 ],
                 2,
+            ],
+            2 => [
+                [
+                    BlockFixturesFactory::create(2,10),
+                    BlockFixturesFactory::create(2,10),
+                    BlockFixturesFactory::create(2,10),
+                    BlockFixturesFactory::create(2,10),
+                ],
+                1
             ]
 
         ];
