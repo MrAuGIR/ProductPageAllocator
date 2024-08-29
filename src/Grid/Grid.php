@@ -9,12 +9,11 @@ class Grid
 {
     private NodeCollection $nodes;
     public function __construct(
-        private int $rows,
-        private int $cols
+        private readonly int $rows,
+        private readonly int $cols
     )
     {
-        $this->nodes = new NodeCollection();
-        $this->nodes->initNodes($cols,$rows);
+        $this->nodes = new NodeCollection($cols,$rows);
     }
 
 
@@ -104,7 +103,7 @@ class Grid
             return false;
         }
 
-        if ($this->nodes->getNodes()[$height][$length]->status === 'X') {
+        if ($this->nodes->getNodes()[$height][$length]->getStatus() === 'X') {
             return false;
         }
 
