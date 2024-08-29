@@ -4,13 +4,13 @@ namespace MrAuGir\Paginator\Grid;
 
 class Node
 {
-    public string $status;
+    private string $status;
 
-    public int $x;
+    private int $x;
 
-    public int $y;
+    private int $y;
 
-    public string $color = "#fff";
+    private string $color = "#fff";
 
     public function getX(): int
     {
@@ -53,9 +53,11 @@ class Node
         return $this->color;
     }
 
-    public function setColor(string $color): void
+    public function setColor(string $color): self
     {
         $this->color = $color;
+
+        return $this;
     }
 
 }
