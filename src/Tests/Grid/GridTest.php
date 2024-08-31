@@ -31,11 +31,11 @@ class GridTest extends TestCase
         $grid->findPositionForBlock($block, $pageCollection);
 
         // une seule page doit exister
-        $this->assertCount(1,$pageCollection->pages);
+        $this->assertCount(1,$pageCollection->getPages());
 
         // l'index doit être un 1
-        $this->assertNotNull($pageCollection->pages[1]);
-        $this->assertEquals(1,$pageCollection->pages[1]->index);
+        $this->assertNotNull($pageCollection->getPages()[1]);
+        $this->assertEquals(1,$pageCollection->getPages()[1]->index);
 
         $blocks = $pageCollection->getOrCreatePage(1)->getBlocks();
 
@@ -80,7 +80,7 @@ class GridTest extends TestCase
         }
 
         // on doit trouver deux pages
-        $this->assertCount(2, $pageCollection->pages);
+        $this->assertCount(2, $pageCollection->getPages());
         // test coutable interface
         $this->assertCOunt(2,$pageCollection);
 
@@ -94,7 +94,7 @@ class GridTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
 
         $pageCollection = new PageCollection();
-        $pageCollection['invalid_argument'] = "not a page instance";
+        $pageCollection[0] = 'InvalidType';
 
     }
 
@@ -158,7 +158,7 @@ class GridTest extends TestCase
 
     private function testResult(PageCollection $pageCollection,int $index, int $blockExpected): void
     {
-        $this->assertCount($blockExpected, $pageCollection->pages[$index]->blocks);
-        $this->assertEquals($index, $pageCollection->pages[$index]->index);
+        $this->assertCount($blockExpected, $pageCollection->getPages()[$index]->blocks);
+        $this->assertEquals($index, $pageCollection->getPages()[$index]->index);
     }
 }
