@@ -8,8 +8,6 @@ use InvalidArgumentException;
 class PageCollection extends ArrayObject
 {
     /**
-     * PageCollection constructor.
-     *
      * @param int $start
      */
     public function __construct(private int $start = 1)
@@ -19,10 +17,8 @@ class PageCollection extends ArrayObject
     }
 
     /**
-     * Add a page to the collection.
-     *
      * @param Page $page
-     * @return self
+     * @return $this
      */
     public function addPage(Page $page): self
     {
@@ -32,8 +28,6 @@ class PageCollection extends ArrayObject
     }
 
     /**
-     * Get or create a page at the specified index.
-     *
      * @param int $index
      * @return Page
      */
@@ -48,9 +42,8 @@ class PageCollection extends ArrayObject
     }
 
     /**
-     * Remove a page at the specified index.
-     *
      * @param int $index
+     * @return void
      */
     public function removePage(int $index): void
     {
@@ -58,8 +51,6 @@ class PageCollection extends ArrayObject
     }
 
     /**
-     * Check if a page exists at the specified index.
-     *
      * @param int $index
      * @return bool
      */
@@ -69,12 +60,23 @@ class PageCollection extends ArrayObject
     }
 
     /**
-     * Get all pages in the collection.
-     *
-     * @return Page[]
+     * @return array
      */
     public function getPages(): array
     {
         return $this->getArrayCopy();
+    }
+
+    /**
+     * @param $index
+     * @param $newval
+     * @return void
+     */
+    public function offsetSet($index, $newval): void
+    {
+        if (!$newval instanceof Page) {
+            throw new InvalidArgumentException('Value must be an instance of Page.');
+        }
+        parent::offsetSet($index, $newval);
     }
 }
