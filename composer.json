@@ -1,5 +1,5 @@
 {
-  "name": "mraugir/paginator,
+  "name": "mraugir/paginator",
   "type": "library",
   "description": "Paginate element",
   "keywords": ["page","catalog","paginator"],
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MrAuGir\\Paginator\\": "src"
+      "MrAuGir\\ElementGridAllocation\\": "src"
     },
     "exclude-from-classmap": [
       "/Tests/"

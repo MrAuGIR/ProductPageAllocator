@@ -1,6 +1,6 @@
 <?php
 
-namespace MrAuGir\Paginator\Page;
+namespace MrAuGir\ElementGridAllocation\Page;
 
 use ArrayObject;
 use InvalidArgumentException;

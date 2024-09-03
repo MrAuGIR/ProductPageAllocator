@@ -1,6 +1,6 @@
 <?php
 
-namespace MrAuGir\Paginator\Template;
+namespace MrAuGir\ElementGridAllocation\Template;
 
 interface GridElementInterface
 {

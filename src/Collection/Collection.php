@@ -1,8 +1,6 @@
 <?php
 
-namespace MrAuGir\Paginator\Collection;
-
-use Traversable;
+namespace MrAuGir\ElementGridAllocation\Collection;
 
 class Collection implements CollectionInterface
 {

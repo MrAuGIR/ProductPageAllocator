@@ -1,5 +1,5 @@
 <?php
-namespace MrAuGir\Paginator\Template;
+namespace MrAuGir\ElementGridAllocation\Template;
 interface TemplatePaginatorInterface
 {
     public function getSlots():int;

@@ -1,6 +1,6 @@
 <?php
 
-namespace MrAuGir\Paginator\Collection;
+namespace MrAuGir\ElementGridAllocation\Collection;
 
 interface CollectionInterface extends \Countable, \IteratorAggregate, \ArrayAccess
 {
