@@ -1,6 +1,6 @@
 <?php
 
-namespace MrAuGir\Paginator;
+namespace MrAuGir\ElementGridAllocation;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;

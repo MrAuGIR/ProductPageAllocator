@@ -1,6 +1,6 @@
 <?php
 
-namespace MrAuGir\Paginator\Grid;
+namespace MrAuGir\ElementGridAllocation\Grid;
 
 class NodeCollection
 {

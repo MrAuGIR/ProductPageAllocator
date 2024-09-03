@@ -1,8 +1,8 @@
 <?php
 
-namespace MrAuGir\Paginator\Tests\Factory;
+namespace MrAuGir\ElementGridAllocation\Tests\Factory;
 
-use MrAuGir\Paginator\Grid\Grid;
+use MrAuGir\ElementGridAllocation\Grid\Grid;
 
 class GridFixturesFactory
 {

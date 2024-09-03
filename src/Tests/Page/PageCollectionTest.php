@@ -1,9 +1,9 @@
 <?php
 
-namespace MrAuGir\Paginator\Tests\Page;
+namespace MrAuGir\ElementGridAllocation\Tests\Page;
 
-use MrAuGir\Paginator\Page\Page;
-use MrAuGir\Paginator\Page\PageCollection;
+use MrAuGir\ElementGridAllocation\Page\Page;
+use MrAuGir\ElementGridAllocation\Page\PageCollection;
 use PHPUnit\Framework\TestCase;
 
 class PageCollectionTest extends TestCase

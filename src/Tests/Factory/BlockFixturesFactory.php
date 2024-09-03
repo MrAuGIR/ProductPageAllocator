@@ -1,8 +1,8 @@
 <?php
 
-namespace MrAuGir\Paginator\Tests\Factory;
+namespace MrAuGir\ElementGridAllocation\Tests\Factory;
 
-use MrAuGir\Paginator\Grid\Block;
+use MrAuGir\ElementGridAllocation\Grid\Block;
 
 class BlockFixturesFactory
 {

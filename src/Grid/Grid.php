@@ -1,9 +1,9 @@
 <?php
 
-namespace MrAuGir\Paginator\Grid;
+namespace MrAuGir\ElementGridAllocation\Grid;
 
-use MrAuGir\Paginator\Page\PageCollection;
-use MrAuGir\Paginator\Template\GridElementInterface;
+use MrAuGir\ElementGridAllocation\Page\PageCollection;
+use MrAuGir\ElementGridAllocation\Template\GridElementInterface;
 
 class Grid
 {

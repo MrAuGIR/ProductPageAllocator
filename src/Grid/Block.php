@@ -1,8 +1,8 @@
 <?php
 
-namespace MrAuGir\Paginator\Grid;
+namespace MrAuGir\ElementGridAllocation\Grid;
 
-use MrAuGir\Paginator\Template\GridElementInterface;
+use MrAuGir\ElementGridAllocation\Template\GridElementInterface;
 
 class Block implements GridElementInterface
 {
