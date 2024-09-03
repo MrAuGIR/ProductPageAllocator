@@ -15,6 +15,7 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->getRootNode();
 
         $rootNode
+            ->fixXmlConfig('grid')
             ->children()
                 ->arrayNode('grids')
                     ->useAttributeAsKey('name')
