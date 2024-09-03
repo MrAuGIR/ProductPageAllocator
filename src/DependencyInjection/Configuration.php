@@ -8,9 +8,41 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 class Configuration implements ConfigurationInterface
 {
 
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder("ElementGridAllocation");
+        $treeBuilder = new TreeBuilder("element_grid_allocation");
+
+        $rootNode = $treeBuilder->getRootNode();
+
+        $rootNode
+            ->children()
+                ->arrayNode('grids')
+                    ->useAttributeAsKey('name')
+                    ->arrayPrototype()
+                        ->children()
+                            ->integerNode('cols')->end()
+                            ->integerNode('rows')->end()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('dispatchers')
+                    ->useAttributeAsKey('name')
+                    ->arrayPrototype()
+                        ->children()
+                            ->scalarNode('grid')->end()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('elements')
+                    ->useAttributeAsKey('name')
+                    ->arrayPrototype()
+                        ->children()
+                            ->integerNode('rows')->end()
+                            ->integerNode('cols')->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }
