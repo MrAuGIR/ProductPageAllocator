@@ -14,8 +14,14 @@ class PageDispatcher
 
     public function __construct()
     {
-        $this->grid = new Grid(10, 8);
         $this->pageCollection = new PageCollection();
+    }
+
+    public function initGrid(Grid $grid): self
+    {
+        $this->grid = $grid;
+
+        return $this;
     }
 
     /**
