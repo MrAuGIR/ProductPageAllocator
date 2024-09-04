@@ -1,13 +1,13 @@
 <?php
 
-namespace MrAuGir\Paginator\Tests\Grid;
+namespace MrAuGir\ElementGridAllocation\Tests\Grid;
 
 
-use MrAuGir\Paginator\Grid\Block;
-use MrAuGir\Paginator\Grid\Grid;
-use MrAuGir\Paginator\Page\PageCollection;
-use MrAuGir\Paginator\Tests\Factory\GridFixturesFactory;
-use MrAuGir\Paginator\Tests\Factory\BlockFixturesFactory;
+use MrAuGir\ElementGridAllocation\Grid\Block;
+use MrAuGir\ElementGridAllocation\Grid\Grid;
+use MrAuGir\ElementGridAllocation\Page\PageCollection;
+use MrAuGir\ElementGridAllocation\Tests\Factory\BlockFixturesFactory;
+use MrAuGir\ElementGridAllocation\Tests\Factory\GridFixturesFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

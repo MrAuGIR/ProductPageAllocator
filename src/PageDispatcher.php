@@ -1,10 +1,10 @@
 <?php
 
-namespace MrAuGir\Paginator;
+namespace MrAuGir\ElementGridAllocation;
 
-use MrAuGir\Paginator\Grid\Grid;
-use MrAuGir\Paginator\Page\PageCollection;
-use MrAuGir\Paginator\Template\GridElementInterface;
+use MrAuGir\ElementGridAllocation\Grid\Grid;
+use MrAuGir\ElementGridAllocation\Page\PageCollection;
+use MrAuGir\ElementGridAllocation\Template\GridElementInterface;
 
 class PageDispatcher
 {
@@ -14,8 +14,14 @@ class PageDispatcher
 
     public function __construct()
     {
-        $this->grid = new Grid(10, 8);
         $this->pageCollection = new PageCollection();
+    }
+
+    public function initGrid(Grid $grid): self
+    {
+        $this->grid = $grid;
+
+        return $this;
     }
 
     /**

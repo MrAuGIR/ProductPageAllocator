@@ -1,10 +1,10 @@
 <?php
 
-namespace MrAuGir\Paginator\Tests\Grid;
+namespace MrAuGir\ElementGridAllocation\Tests\Grid;
 
 use Monolog\Test\TestCase;
-use MrAuGir\Paginator\Grid\Node;
-use MrAuGir\Paginator\Grid\NodeCollection;
+use MrAuGir\ElementGridAllocation\Grid\Node;
+use MrAuGir\ElementGridAllocation\Grid\NodeCollection;
 
 class NodeCollectionTest extends TestCase
 {
